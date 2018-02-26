@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Platform, Dimensions ,StyleSheet, Text, View, AppRegistry } from 'react-native';
 import {Container, Content} from 'native-base';
 import Camera from 'react-native-camera';
+import BottomBar from '../components/camera-bottom';
+import TopBar from '../components/camera-top';
+
 
 
 type Props = {};
@@ -15,8 +18,17 @@ export default class CameraComponent extends Component<Props> {
                         this.camera = cam;
                     }}
                     style={styles.preview}
-                    aspect={Camera.constants.Aspect.fill}>
-                    <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
+                    aspect={Camera.constants.Aspect.fill}
+                    type={this.state.captureType}
+                    flashMode={this.state.flashmode}
+                >
+                    <View style={{flex:1, justifyContent:'space-between'}}>
+                        <TopBar {...this.props}/>
+                        <View style={{height:40, backgroundColor:'#333', alignSelf:'center', justifyContent:'center', padding:10}}><Text style={{color:'#fff'}}>Camera Background Works on Device</Text></View>
+                        <View>
+                            <BottomBar {...this.props.actions} {...this.props}/>
+                        </View>
+                    </View>
                 </Camera>
             </View>
         );
