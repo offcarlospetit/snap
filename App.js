@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import {Container, Content} from 'native-base';
 import Swiper from 'react-native-swiper';
+import Camera from './components/Camera';
 
 
 type Props = {};
@@ -49,7 +50,7 @@ export default class App extends Component<Props> {
                     <Text style={styles.text}>Buscar</Text>
                 </View>
                 <View style={styles.slideDefault}>
-                    <Text style={styles.text}>Camara</Text>
+                    <Camera></Camera>
                 </View>
                 <View style={styles.slideDefault}>
                     <Text style={styles.text}>Memorias</Text>
